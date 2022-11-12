@@ -41,7 +41,9 @@ public class UserDaoHibernateImpl implements UserDao {
             session.getTransaction().commit();
             System.out.println("User с именем " + name + " добавлен в базу данных");
         } catch (Exception e) {
-            session.getTransaction().rollback();
+            if(session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
             System.out.println("Ошибка запроса");
             e.printStackTrace();
         } finally {
@@ -62,7 +64,9 @@ public class UserDaoHibernateImpl implements UserDao {
             session.getTransaction().rollback();
             System.out.println("Возможно строки с таким id не существует");
         } catch (Exception e) {
-            session.getTransaction().rollback();
+            if(session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
             System.out.println("Ошибка запроса");
             e.printStackTrace();
         } finally {
@@ -79,7 +83,9 @@ public class UserDaoHibernateImpl implements UserDao {
             list = session.createQuery("from User").getResultList();
             session.getTransaction().commit();
         } catch (Exception e) {
-            session.getTransaction().rollback();
+            if(session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
             System.out.println("Ошибка запроса");
             e.printStackTrace();
         } finally {
@@ -98,7 +104,9 @@ public class UserDaoHibernateImpl implements UserDao {
             session.getTransaction().commit();
             System.out.println("Таблица очищена");
         } catch (Exception e) {
-            session.getTransaction().rollback();
+            if(session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
             System.out.println("Ошибка запроса");
         } finally {
             session.close();
