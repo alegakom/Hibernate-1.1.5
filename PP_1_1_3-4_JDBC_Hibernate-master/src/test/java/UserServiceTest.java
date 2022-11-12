@@ -9,8 +9,7 @@ import org.junit.Test;
 import java.util.List;
 
 public class UserServiceTest {
-    private final UserDaoJDBCImpl userService = new UserDaoJDBCImpl();
-//    private final UserDaoHibernateImpl userService = new UserDaoHibernateImpl();
+    private final UserService userService = new UserServiceImpl();
 
     private final String testName = "Ivan";
     private final String testLastName = "Ivanov";
